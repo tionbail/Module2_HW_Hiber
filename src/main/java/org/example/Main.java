@@ -93,9 +93,9 @@ public class Main {
                 System.out.println("Not found" + id);
                 return;
             }
-            String name = getStringInput("Enter new name (press enter to keep current): ");
-            String email = getStringInput("Enter new email (press enter to keep current): ");
-            String ageStr = getStringInput("Enter new age (press enter to keep current): ");
+            String name = getStringInput("new name: ");
+            String email = getStringInput("new email: ");
+            String ageStr = getStringInput("new age: ");
 
             if (!name.isEmpty()) user.setName(name);
             if (!email.isEmpty()) user.setEmail(email);

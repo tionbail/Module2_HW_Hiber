@@ -1,11 +1,9 @@
 package DAO;
 
 
-import java.util.Optional;
-
 public interface UserDAO<T> {
 
-    Optional<T> read(int id);
+    T read(int id);
 
     T create(T user);
 

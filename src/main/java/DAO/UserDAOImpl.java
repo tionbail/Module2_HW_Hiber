@@ -11,8 +11,8 @@ import java.util.Optional;
 public class UserDAOImpl implements UserDAO<User> {
 
     @Override
-    public Optional<User> read(int id) {
-        return Optional.ofNullable(HibernateSessionFactory.getSessionFactory().openSession().get(User.class, id));
+    public User read(int id) {
+        return HibernateSessionFactory.getSessionFactory().openSession().get(User.class, id);
     }
 
     @Override

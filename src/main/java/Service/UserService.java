@@ -10,7 +10,7 @@ public class UserService {
     private UserDAOImpl userDAOimpl = new UserDAOImpl();
     public UserService() {}
 
-    public Optional<User> readUser(int id) {
+    public User readUser(int id) {
         return userDAOimpl.read(id);
     }
 

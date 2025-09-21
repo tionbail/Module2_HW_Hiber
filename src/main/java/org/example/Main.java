@@ -84,7 +84,6 @@ public class Main {
     }
 
     private static void updateUser() {
-        System.out.println("\n--- Update User ---");
         int id = getIntInput("User ID: ");
 
         User existingUser = userService.readUser(id);
@@ -92,8 +91,6 @@ public class Main {
             System.out.println("User not found");
             return;
         }
-
-        System.out.println("Current: " + existingUser);
 
         String name = getStringInput("New name: ");
         String email = getStringInput("New email: ");

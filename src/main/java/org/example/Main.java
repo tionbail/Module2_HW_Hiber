@@ -61,9 +61,8 @@ public class Main {
         int age = getIntInput("age: ");
 
         try {
-            User user = new User(name, email, age);
-            userService.createUser(user);
-            System.out.println("User created: " + user);
+            User user = userService.createUser(name, email, age);
+            System.out.println("User created");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -85,31 +84,31 @@ public class Main {
     }
 
     private static void updateUser() {
+        System.out.println("\n--- Update User ---");
         int id = getIntInput("User ID: ");
+
+        User existingUser = userService.readUser(id);
+        if (existingUser == null) {
+            System.out.println("User not found");
+            return;
+        }
+
+        System.out.println("Current: " + existingUser);
+
+        String name = getStringInput("New name: ");
+        String email = getStringInput("New email: ");
 
         try {
-            User user = userService.readUser(id);
-            if (user == null) {
-                System.out.println("Not found" + id);
-                return;
-            }
-            String name = getStringInput("new name: ");
-            String email = getStringInput("new email: ");
-            String ageStr = getStringInput("new age: ");
-
-            if (!name.isEmpty()) user.setName(name);
-            if (!email.isEmpty()) user.setEmail(email);
-            if (!ageStr.isEmpty()) user.setAge(Integer.parseInt(ageStr));
-
-            userService.updateUser(user);
+            User updatedUser = userService.updateUser(id, name, email);
+            System.out.println("Updated: " + updatedUser);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid age format");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Update failed: " + e.getMessage());
         }
     }
-
     private static void deleteUser() {
         int id = getIntInput("User ID: ");
-
         try {
             User user = userService.readUser(id);
             if (user == null) {

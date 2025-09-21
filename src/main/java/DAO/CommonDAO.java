@@ -1,7 +1,7 @@
 package DAO;
 
 
-public interface UserDAO<T> {
+public interface CommonDAO<T> {
 
     T read(int id);
 
